@@ -73,7 +73,7 @@ jobs:
         with:
           releaseDirectory: app/build/outputs/apk/premium/release
           signingKeyBase64: ${{ secrets.APK_SIGNING_KEYSTORE_FILE }}
-          alias: orgzly-revived-20231013
+          alias: mainAlias
           keyStorePassword: ${{ secrets.APK_SIGNING_KEYSTORE_PASSWORD }}
           keyPassword:  ${{ secrets.APK_SIGNING_KEYSTORE_PASSWORD }}
         env:
