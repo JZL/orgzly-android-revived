@@ -67,20 +67,20 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # - name: Sign "premium" APK
-      #   uses: r0adkll/sign-android-release@v1
-      #   id: sign_premium_apk
-      #   with:
-      #     releaseDirectory: app/build/outputs/apk/premium/release
-      #     signingKeyBase64: ${{ secrets.APK_SIGNING_KEYSTORE_FILE }}
-      #     alias: orgzly-revived-20231013
-      #     keyStorePassword: ${{ secrets.APK_SIGNING_KEYSTORE_PASSWORD }}
-      #   env:
-      #     BUILD_TOOLS_VERSION: ${{ env.BUILD_TOOL_VERSION }}
+      - name: Sign "premium" APK
+        uses: r0adkll/sign-android-release@v1
+        id: sign_premium_apk
+        with:
+          releaseDirectory: app/build/outputs/apk/premium/release
+          signingKeyBase64: ${{ secrets.APK_SIGNING_KEYSTORE_FILE }}
+          alias: orgzly-revived-20231013
+          keyStorePassword: ${{ secrets.APK_SIGNING_KEYSTORE_PASSWORD }}
+        env:
+          BUILD_TOOLS_VERSION: ${{ env.BUILD_TOOL_VERSION }}
 
       - name: Rename "premium" APK file
-        run: cp app/build/outputs/apk/premium/release/app-premium-release-unsigned.apk orgzly-revived-`date +%s`apk
-      #   run: mv ${{steps.sign_premium_apk.outputs.signedReleaseFile}} orgzly-revived-${{ env.VERSION }}.apk
+        # run: cp app/build/outputs/apk/premium/release/app-premium-release-unsigned.apk orgzly-revived-`date +%s`.apk
+        run: mv ${{steps.sign_premium_apk.outputs.signedReleaseFile}} orgzly-revived-`date +%s`.apk
 
       # "Premium" AAB
 
