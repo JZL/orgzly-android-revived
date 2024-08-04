@@ -79,7 +79,7 @@ jobs:
       #     BUILD_TOOLS_VERSION: ${{ env.BUILD_TOOL_VERSION }}
 
       - name: Rename "premium" APK file
-        run: cp app/build/outputs/apk/premium/release/app-premium-release-unsigned.apk orgzly-revived-${{ env.VERSION }}.apk
+        run: cp app/build/outputs/apk/premium/release/app-premium-release-unsigned.apk orgzly-revived-newV.apk
       #   run: mv ${{steps.sign_premium_apk.outputs.signedReleaseFile}} orgzly-revived-${{ env.VERSION }}.apk
 
       # "Premium" AAB
