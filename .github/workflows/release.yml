@@ -63,6 +63,7 @@ jobs:
           echo "dropbox.app_key_schema = \"db-${{ secrets.DROPBOX_APP_KEY }}\"" >> app.properties
 
       - name: Assemble "premium" APK
+        id: assemble_premium
         run: ./gradlew assemblePremiumRelease --stacktrace
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -79,7 +80,7 @@ jobs:
       #     BUILD_TOOLS_VERSION: ${{ env.BUILD_TOOL_VERSION }}
 
       - name: Rename "premium" APK file
-        run: ls -la app/build/outputs/apk/premium/release/*
+        run: ls ${{steps.assemble_premium.outputs}}
       #   run: mv ${{steps.sign_premium_apk.outputs.signedReleaseFile}} orgzly-revived-${{ env.VERSION }}.apk
 
       # "Premium" AAB
