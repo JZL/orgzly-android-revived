@@ -33,9 +33,6 @@ jobs:
           echo "BUILD_TOOL_VERSION=$BUILD_TOOL_VERSION" >> $GITHUB_ENV
           echo Last build tool version is: $BUILD_TOOL_VERSION
 
-      - name: test Date
-        run: echo orgzly-revived-`date +%s`.apk
-
       # F-Droid APK
 
       # - name: Assemble F-Droid APK
@@ -82,7 +79,7 @@ jobs:
       #     BUILD_TOOLS_VERSION: ${{ env.BUILD_TOOL_VERSION }}
 
       - name: Rename "premium" APK file
-        run: cp app/build/outputs/apk/premium/release/app-premium-release-unsigned.apk orgzly-revived-newV.apk
+        run: cp app/build/outputs/apk/premium/release/app-premium-release-unsigned.apk orgzly-revived-`date +%s`apk
       #   run: mv ${{steps.sign_premium_apk.outputs.signedReleaseFile}} orgzly-revived-${{ env.VERSION }}.apk
 
       # "Premium" AAB
